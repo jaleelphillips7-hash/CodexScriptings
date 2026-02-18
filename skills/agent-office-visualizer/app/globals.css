@@ -1,0 +1,14 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "JetBrains Mono", monospace; background:#0e1422; color:#dce5ff; }
+.main { padding: 16px; display:grid; grid-template-columns: 1.8fr 1fr; gap:12px; min-height:100vh; }
+.card { background:#151f31; border:1px solid #2d3a57; border-radius:10px; padding:10px; }
+.canvasWrap canvas { width:100%; height:auto; display:block; image-rendering:pixelated; border-radius:8px; }
+.widgets { display:grid; gap:12px; align-content:start; }
+.banner { padding:8px; border-radius:8px; margin-bottom:8px; font-size:13px; }
+.banner.warn { background:#4a2a20; border:1px solid #884e37; }
+.badge { display:inline-flex; gap:6px; align-items:center; margin:2px; border:1px solid #394b72; border-radius:99px; padding:4px 8px; font-size:12px; }
+.dot { width:8px; height:8px; border-radius:50%; }
+button { background:#27406f; color:#fff; border:none; border-radius:6px; padding:8px 10px; cursor:pointer; font-family:inherit; }
+pre { max-height:180px; overflow:auto; background:#0d1424; padding:8px; border-radius:8px; border:1px solid #253456; font-size:11px; }
+.small { font-size:12px; color:#9fb0d1; }
