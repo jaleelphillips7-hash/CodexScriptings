@@ -1,0 +1,44 @@
+OpenClaw Agent Hub — Install Steps
+
+1) Clone the repository
+   - git clone <your-repo-url>
+   - cd CodexScriptings
+
+2) Go to the hub project
+   - cd skills/agent-office-visualizer
+
+3) Install Node.js dependencies
+   - npm install
+
+4) Set required environment variables
+   - OPENCLAW_GATEWAY_URL=http://127.0.0.1:18789
+   - OPENCLAW_GATEWAY_TOKEN=<your_gateway_token>
+   - PUBLIC_BASE_URL=<your_public_url>
+   - BACKBLAZE_CONFIG=<your_backblaze_config>
+   - BACKUP_SCRIPT_PATH=<absolute_path_to_backup_script>
+   - (Optional) ERROR_LOG_PATH=/data/.openclaw/ERRORS_DETECTED.md
+
+5) Run locally (development)
+   - npm run dev
+   - Open http://localhost:4173
+
+6) Build and run production locally
+   - npm run build
+   - npm run start
+
+7) Docker deployment (same network namespace as OpenClaw gateway)
+   - Ensure your compose uses:
+     network_mode: "service:openclaw-cfww-openclaw-1"
+   - Build/start from skills/agent-office-visualizer:
+     docker compose -f docker-compose.hub.yml up --build -d
+
+8) Validate the app
+   - Open the hub URL
+   - Confirm agent list is populated from real agents
+   - Confirm statuses change every 5 seconds
+   - Confirm backup endpoint requires confirmation flow before execution
+
+9) Troubleshooting
+   - 401 error: check OPENCLAW_GATEWAY_TOKEN
+   - 404 tool blocked: tool policy does not allow agents_list/sessions_list
+   - No agents visible: gateway currently returns zero agents
