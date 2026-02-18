@@ -1,18 +1,22 @@
 ---
 name: agent-office-visualizer
-description: Next.js OpenClaw Agent Hub with real agent statuses from tools/invoke.
+description: Create and run a retro 2D office simulation for AI agents using HTML Canvas and JavaScript.
 ---
 
-# OpenClaw Agent Hub
+# Agent Office Visualizer Skill
 
-## Stack
-- Next.js App Router + TypeScript.
+This skill provides a standalone canvas-based office simulation located in this folder.
 
-## Data source
-- Gateway `POST /tools/invoke` with tools `agents_list` and `sessions_list`.
+## Files
+- `index.html`: shell UI + canvas + status badges
+- `office-sim.js`: rendering, animation loop, behaviors, and API polling
+- `README.md`: usage details
 
-## Key behavior
-- no hardcoded roster
-- dynamic desks/beds
-- working => desk typing
-- not_working => bed sleeping
+## Usage
+1. Serve repository root (or this folder) with a static server.
+2. Open `/skills/agent-office-visualizer/` in a browser.
+3. Optionally implement `/api/employee-status` in your host app.
+
+## Integration notes
+- This feature is self-contained and can run in parallel with other repository systems.
+- It requires no external assets; all pixel art is drawn with `fillRect`.
