@@ -1,0 +1,16 @@
+services:
+  agent-hub:
+    build: .
+    container_name: openclaw-agent-hub
+    network_mode: "service:openclaw-cfww-openclaw-1"
+    environment:
+      OPENCLAW_GATEWAY_URL: "http://127.0.0.1:18789"
+      OPENCLAW_GATEWAY_TOKEN: "${OPENCLAW_GATEWAY_TOKEN}"
+      PUBLIC_BASE_URL: "${PUBLIC_BASE_URL}"
+      BACKBLAZE_CONFIG: "${BACKBLAZE_CONFIG}"
+      BACKUP_SCRIPT_PATH: "${BACKUP_SCRIPT_PATH}"
+      ERROR_LOG_PATH: "${ERROR_LOG_PATH:-/data/.openclaw/ERRORS_DETECTED.md}"
+    volumes:
+      - /data/.openclaw:/data/.openclaw:ro
+      - /data/scripts:/data/scripts:ro
+    command: ["npm", "run", "start"]
